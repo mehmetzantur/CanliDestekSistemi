@@ -1,0 +1,893 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<%@ Register Assembly="NickLee.Web.UI" Namespace="NickLee.Web.UI" TagPrefix="NickLee" %>
+
+<%@ Register Assembly="C1.Web.UI.Controls.2" Namespace="C1.Web.UI.Controls.C1Window"
+    TagPrefix="cc1" %>
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="images/chatprostil.css" rel="stylesheet" type="text/css" />
+    <script src="Scripts/jquery-1.2.6.pack.js" type="text/javascript"></script>
+    <link href="images/adminstil.css" rel="stylesheet" type="text/css" />
+    <script src="Scripts/jquery-1.3.2.min.js" type="text/javascript"></script>
+
+    <script language="javascript" type="text/javascript">
+
+        
+
+        function baslatdivgizle() {
+            document.getElementById("baslatdiv").style.display = 'none';
+           
+        }
+        function baslatdivgoster() {    
+                document.getElementById("baslatdiv").style.display = 'block';
+            }
+
+
+            var oncekiSayi = 0;
+            var oncekiSayikisiler = 0;
+            var oncekiSayikisileroffline = 0;
+            var sonrakiSayi = 0;
+            var sonrakiSayikisiler = 0;
+            var sonrakiSayikisileroffline = 0;
+            var ktimer;
+            var gelendiv;
+            var onofdegisken = 1;
+            var app = 0;
+
+
+            function iframetik() {
+                document.getElementById("iframe1").contentWindow.document.body.onclick = function () {
+                    onof();
+                }
+            }
+
+            function onof() {
+               
+                if (onofdegisken == 1) {
+                    //document.getElementById("onofdiv").innerHTML = "";
+                    //document.getElementById("onofdiv").innerHTML = "<img src='images/icons/offline.png' />Çevrimdışı";
+
+                    onofdegisken = 0;
+                  
+                }
+                else {
+                    //document.getElementById("onofdiv").innerHTML = "";
+                    //document.getElementById("onofdiv").innerHTML = "<img src='images/icons/online.png' />Çevrimiçi";
+
+                    onofdegisken = 1;
+                   
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: "WebService.asmx/onof_yon",
+                    data: "{onofdeger:'" + onofdegisken + "'}",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (msg) {
+
+                        if (msg.d == 1) {
+                            //document.getElementById("onofdiv").innerHTML = "<img src='images/icons/online.png' /> Çevrimiçi";
+                            onofdegisken = 1;
+                            count();
+                      
+                        }
+                        else {
+                            //document.getElementById("onofdiv").innerHTML = "<img src='images/icons/offline.png' /> Çevrimdışı";
+                            onofdegisken = 0;
+
+                        }
+
+                    },
+                    Error: function (error) {
+                        (error);
+                    }
+                });
+
+
+
+
+            }
+
+
+
+            function divtasi(hangidiv) {
+                
+                hangidiv = hangidiv.substring(0, hangidiv.length - 1);
+                
+
+                if (dizim2[hangidiv] != hangidiv) {
+
+                  
+                    document.getElementById(hangidiv + "g2").style.display = "none";
+                    gelendiv = document.getElementById("geneldiv" + hangidiv);
+                    document.getElementById("chatprosabitdiv").appendChild(gelendiv);
+                   
+                    dizim2[hangidiv] = hangidiv;
+                    var divsc = document.getElementById(hangidiv + "altbolum");
+                    divsc.scrollTop += 10000;
+                }
+                else {
+                 
+                    gelendiv = document.getElementById(hangidiv);
+
+                    dizim2[hangidiv] = null;
+                    document.getElementById(hangidiv + "g2").style.display = "block";
+                   
+                    gelendiv = document.getElementById("geneldiv" + hangidiv);
+                    document.getElementById("chatalani").appendChild(gelendiv);
+                    
+                    document.getElementById("v" + hangidiv).focus();
+                    var divsc = document.getElementById(hangidiv + "altbolum");
+                    divsc.scrollTop += 999999;
+                    document.getElementById("geneldiv"+hangidiv).childNodes.item(1).childNodes.item(0).style.backgroundColor = "#005789";
+                    document.title = "Devlogy";
+                }
+
+            }
+
+
+            function divsil(hangidiv) {
+                var temp = new Array();
+                temp = hangidiv.split('k');
+                hangidiv = temp[0];
+
+                document.getElementById("geneldiv" + hangidiv).style.display = "none";
+
+            }
+
+
+
+            var dizim2 = new Array();
+            var dizim = new Array();
+            var mesajlarim = new Array();
+            var kisilerdizi = new Array();
+            var durumlardizi = new Array();
+            var kimeiddizi = new Array();
+            var tempkimeid = new Array();
+
+            function divyarat(gelen) {
+                var temp = new Array();
+                temp = gelen.split('a');
+                gelen = temp[0];
+                if (dizim[gelen] == gelen) {
+                    document.getElementById("geneldiv" + gelen).style.display = "block";
+                    if (onofdegisken == 0) {
+                        onof();
+                    }
+
+                }
+
+                if (dizim[gelen] != gelen) {
+                    dizim[gelen] = gelen;
+                   
+                    var divicerik = " <div id=cerceve" + gelen + " style='float:right; margin-right:2px; border: thin groove #000000;'><div id=" + gelen + "g1 class='pencerebacks'><div id=" + gelen + "w style='height:24px; margin-top:3px; width:160px; float:left; align=left; cursor:pointer;' onclick='divtasi(this.id)'>" + document.getElementById(gelen + "a").innerHTML + "</div><div id=sagbolum style='height:20px; width:40px; float:left;' align=right><input id=" + gelen + "k type=button class='pencerex' onclick=divsil(this.id) /></div></div><div id=" + gelen + "g2 class='mesajlardiv'><div id=" + gelen + "altbolum style='height:229px; width:200px; overflow:auto; background-color:white; font-family:calibri;'></div><input id=v" + gelen + " type=text style='height:15px; width:193px; font-size:12px; font-family:Calibri;' onkeypress='return enterbas(event,this.id,this.value)' /></div></div>";
+                   
+                    var divler = document.createElement("div");
+                    divler.id = "geneldiv"+gelen;
+                    divler.innerHTML = divicerik;
+                    document.getElementById("chatalani").appendChild(divler);
+                    document.getElementById("v" + gelen).focus();
+                    var divsc = document.getElementById(gelen + "altbolum");
+                    divsc.scrollTop += 500
+                    
+                }
+
+            }
+
+
+
+            function kisilistesi() {
+
+                $.ajax({
+                    type: "POST",
+                    url: "WebService.asmx/kisilistesi_yon",
+                    data: "{}",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (msg) {
+                        document.getElementById("kisialani").innerHTML = msg.d;
+                        
+                        if (app == 0) {
+                            setTimeout(count, 2000);
+                            app = 1;
+                        }
+
+                    },
+                    Error: function (error) {
+                        (error);
+                    }
+                });
+            }
+
+            function yazar(gelen) {
+
+                for (var i = 0; i < document.getElementById("aaa").childNodes.length; i++) {
+                    
+                    var mesaj = document.getElementById("aaa").childNodes.item(i).innerHTML;
+                   
+                    var kisiid = document.getElementById("aaa").childNodes.item(i).id;
+                    var mesajid = document.getElementById("aaa").childNodes.item(i).title;
+                    //("id=" + kisiid + "  title=" + mesajid +"  mesaj=" + mesaj);
+                    mesajlarim[kisiid] = mesaj;
+                    okunduyap(mesajid,kisiid);
+                    
+                }
+
+
+            }
+
+
+            function okunduyap(MESAJID,KISIID)
+            {
+
+                $.ajax({
+                    type: "POST",
+                    url: "WebService.asmx/mesaj_okundu_yon",
+                    data: "{MESAJID:'" + MESAJID + "'}",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (msg) {
+                        document.getElementById("ccc").innerHTML = msg.d;
+                        if (dizim[KISIID] == null) {
+                            if (mesajlarim[KISIID].toString().length != 0) {
+                                divyarat(KISIID);
+
+                                if (mesajlarim[KISIID] != document.getElementById(KISIID + "altbolum").innerHTML) {
+                                   
+                                    document.getElementById(KISIID).style.display = "block";
+                                   
+                                    if (document.getElementById(KISIID + "altbolum").lastChild != null) {
+                                        if (document.getElementById(KISIID + "altbolum").lastChild.id == KISIID) {
+
+                                            document.getElementById(KISIID + "altbolum").innerHTML += msg.d;
+                                          
+                                        }
+                                        else {
+                                            var kimden = document.getElementById("ccc").childNodes.item(0).title;
+                                            document.getElementById(KISIID + "altbolum").innerHTML += kimden + "<br>" + msg.d;
+                                        }
+                                    }
+                                    else {
+                                        var kimden = document.getElementById("ccc").childNodes.item(0).title;
+                                        document.getElementById(KISIID + "altbolum").innerHTML += kimden + "<br>" + msg.d;
+                                    }
+
+                                    document.getElementById(KISIID + "altbolum").scrollTop = document.getElementById(KISIID + "altbolum").innerHTML.length;
+                                    document.getElementById("v" + KISIID).focus();
+                                }
+                            }
+                        }
+                        else {
+                            
+                            if (mesajlarim[KISIID] != document.getElementById(KISIID + "altbolum").innerHTML) {
+                                if (document.getElementById(KISIID + "g2").style.display == "none") {
+                                   
+                                    document.getElementById(KISIID + "g1").style.backgroundColor = "#c79b1d";
+                                    document.title = "Yeni Mesaj Var!";
+                                }
+                              
+                                document.getElementById("geneldiv"+KISIID).style.display = "block";
+                                 
+                                if (document.getElementById(KISIID + "altbolum").lastChild.id == KISIID) {
+                                 
+                                    document.getElementById(KISIID + "altbolum").innerHTML += msg.d;
+                               
+                                }
+                                else {
+                                    var kimden = document.getElementById("ccc").childNodes.item(0).title;
+                                    document.getElementById(KISIID + "altbolum").innerHTML += "<hr>" + kimden + "<br>" + msg.d;
+                                }
+
+
+
+
+                                document.getElementById(KISIID + "altbolum").scrollTop = document.getElementById(KISIID + "altbolum").innerHTML.length;
+                                document.getElementById("v" + KISIID).focus();
+                            }
+                        }
+
+                    },
+                    Error: function (error) {
+                        (error);
+                    }
+                });
+            }
+
+            function kisidurumayar() {
+
+                for (var i = 0; i < document.getElementById("bbb").childNodes.length; i++) {
+                    kisilerdizi[i] = document.getElementById("bbb").childNodes.item(i).id.split("n");
+                    var kisino = kisilerdizi[i].toString();
+                    kisilerdizi[i] = kisino.substring(0, kisino.length - 1);
+
+                    durumlardizi[i] = document.getElementById("bbb").childNodes.item(i).innerHTML;
+
+                    var durumno = durumlardizi[i].toString().substring(0, 1);
+
+                }
+
+                for (var i = 0; i < document.getElementById("bbb").childNodes.length; i++) {
+
+                    var q = kisilerdizi[i].toString();
+
+                    if (dizim[q] != null) {
+
+                        document.getElementById(q + "w").innerHTML = "";
+
+                    }
+
+                }
+
+
+                for (var i = 0; i < document.getElementById("bbb").childNodes.length; i++) {
+
+                    var q = kisilerdizi[i].toString();
+
+                    if (dizim[q] != null) {
+
+                        document.getElementById(q + "w").innerHTML = durumlardizi[i].toString();
+                    }
+
+                }
+
+
+
+            }
+
+
+            function al() {
+
+                $.ajax({
+                    type: "POST",
+                    url: "WebService.asmx/mesaj_yaz_yon",
+                    data: "{}",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (msg) {
+
+                        oncekiSayi = sonrakiSayi;
+
+                        document.getElementById("aaa").innerHTML = msg.d;
+
+                        yazar(msg.d);
+                        
+                    },
+                    Error: function (error) {
+                        (error);
+                    }
+                });
+            }
+
+
+
+            function enterbas(e, kime, mesaj) {
+                if (e.keyCode == 13) {
+                    kime = kime.substring(1, kime.length);
+                    kime = kime + "s";
+                    mesajekle(kime, mesaj);
+                    return false;
+                }
+            }
+
+
+
+
+            function mesajekle(kimeID, mesj) {
+
+               
+
+                if (mesj != "") {
+                    var benkimim = document.getElementById("ctl00_bilgi").childNodes.item(1).innerHTML;
+                    var benkimimID = document.getElementById("ctl00_bilgi").childNodes.item(0).innerHTML;
+                    
+                    var temp5 = new Array();
+
+                    temp5[0] = kimeID.split("s");
+                    kimeID = temp5[0].toString();
+                    kimeID = kimeID.substring(0, kimeID.length - 1);
+
+                    document.getElementById("v" + kimeID).value = "";
+                    document.getElementById("v" + kimeID).focus();
+                    var smesaj = mesj;
+
+                    for (var i = 0; i < 5; i++) {
+                    smesaj = smesaj.replace(":D", "<img src='images/smiley/g2.gif' />");
+                    smesaj = smesaj.replace(":)", "<img src='images/smiley/g1.gif' />");
+                    smesaj = smesaj.replace(":(", "<img src='images/smiley/ag1.gif' />");
+                    smesaj = smesaj.replace(":P", "<img src='images/smiley/gd.gif' />");
+                    smesaj = smesaj.replace(";)", "<img src='images/smiley/ga.gif' />");
+                    
+                    }
+                    
+                   
+                    if (document.getElementById(kimeID + "altbolum").lastChild != null) {
+                             if (document.getElementById(kimeID + "altbolum").lastChild.id == benkimimID) {
+
+
+                                 document.getElementById(kimeID + "altbolum").innerHTML += "<div id=" + benkimimID + " style='width:180px;' ><FONT COLOR=#696969>&nbsp;&nbsp;" + smesaj + "</font></div>";
+
+                            }
+                            else {
+                                document.getElementById(kimeID + "altbolum").innerHTML += "<hr><div id=" + benkimimID + " style='width:180px;' ><FONT COLOR=#696969>" + benkimim + ":<br>&nbsp;&nbsp;" + smesaj + "</font></div>";
+                            }
+                    }
+                    else {
+                        document.getElementById(kimeID + "altbolum").innerHTML += "<div id=" + benkimimID + " style='width:180px;' ><FONT COLOR=#696969>" + benkimim + ":<br>&nbsp;&nbsp;" + smesaj + "</font></div>";
+                    }
+                   
+
+
+
+                    //document.getElementById(kimeID + "altbolum").innerHTML += "<FONT COLOR=#696969>" + benkimim + ": " + mesj + "</FONT><br>";
+                    
+                    var divsc = document.getElementById(kimeID + "altbolum");
+                    divsc.scrollTop += 500;
+                    $.ajax({
+                        type: "POST",
+                        url: "WebService.asmx/mesajekle_yon",
+                        data: "{mesaj:'" + mesj + "',kimegidecek:'" + kimeID + "'}",
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (msg) {
+
+
+                        }
+                    });
+                }
+
+            }
+
+
+
+
+
+            //setTimeout(count, 2000);
+            setTimeout(kisilistesi, 1000);
+            //setTimeout(online_control, 3000);
+
+            function count() {
+
+                $.ajax({
+                    type: "POST",
+                    url: "WebService.asmx/count_al_yon",
+                    data: "{}",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (value) {
+                        //("onceki sayi= " + oncekiSayi + "   sonraki sayi= " + sonrakiSayi);
+                        sonrakiSayi = value.d;
+                        //("onceki sayi= " + oncekiSayi + "   sonraki sayi= " + sonrakiSayi);
+                        if (oncekiSayi != sonrakiSayi) {
+
+                            setTimeout(al, 1000);
+
+                        }
+
+                        setTimeout(kisilistesi, 5000);
+                        setTimeout(online_control, 5000);
+
+                        if (onofdegisken == 1) {
+                            setTimeout(count, 2000);
+                        }
+
+                    },
+                    Error: function (error) {
+                        (error);
+                    }
+                });
+            }
+
+
+            function online_control() {
+
+                $.ajax({
+                    type: "POST",
+                    url: "WebService.asmx/onlinekontrol_yon",
+                    data: "{}",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (value) {
+                        
+                        document.getElementById("bbb").innerHTML = value.d;
+                        setTimeout(kisidurumayar, 3000);
+
+                    },
+                    Error: function (error) {
+                        (error);
+                    }
+                });
+            }
+
+            function titleduzelt() {
+
+                document.title = "Devlogy";
+
+            }
+
+
+
+            
+    </script>
+
+
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+
+        .style1
+        {
+            width: 200px;
+            float: left;
+            height: 40px;
+        }
+        .style5
+        {
+            width: 32px;
+            height: 32px;
+        }
+        .style6
+        {
+            width: 50px;
+        }
+        .style8
+        {
+            width: 15px;
+        }
+        .style12
+        {
+            width: 48px;
+            height: 48px;
+        }
+        .style13
+        {
+            width: 7px;
+        }
+        .style14
+        {
+            width: 59px;
+        }
+
+        #kucult
+        {
+            height: 20px;
+        }
+        #kapat
+        {
+            height: 20px;
+        }
+        #Button1
+        {
+            height: 27px;
+            width: 25px;
+        }
+    </style>
+
+
+
+
+</head>
+<body onload="baslatdivgizle()" onbeforeunload="onof()" style="background-image: url('images/win7-desktop-bg.jpg'); background-repeat: no-repeat; font-family:Calibri;">
+    <form id="form1" runat="server">
+    <div onmouseover="titleduzelt()">
+     <asp:ScriptManager ID="ScriptManager1" runat="server">
+        </asp:ScriptManager>
+        
+     <asp:UpdatePanel ID="UpdatePanel12" runat="server">
+           <ContentTemplate>
+           <div id="bbbb" runat="server" 
+                   style="font-size: x-large; margin-top: 150px; font-weight: bold; ">
+           
+               <asp:Timer ID="Timer1" runat="server" Enabled="False" Interval="10000" 
+                   ontick="Timer1_Tick">
+               </asp:Timer>
+               <asp:Label ID="Label4" runat="server" Font-Bold="True" Font-Names="Calibri" 
+                   ForeColor="#333333"></asp:Label>
+               <br />
+               <img alt="" class="style76" 
+                   src="images/icons/loader.gif" />
+           
+           </div>
+           </ContentTemplate>
+           </asp:UpdatePanel>
+       
+           <div id="anadivbu" class="anadiv" onclick="baslatdivgizle()" runat="server">
+        
+     
+
+
+        <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+        <ContentTemplate>
+
+            <div id="simgeler">
+                <div class="simgeuygulamaayarlari">
+                        <asp:ImageButton ID="ImageButton1" runat="server" 
+                            ImageUrl="~/images/icons/uygulamaayarlari.png" onclick="ImageButton1_Click" /><br />
+                    Uygulama Ayarları</div>
+                <br />
+                <br />
+                <br />
+                <cc1:C1Window ID="C1Window1" runat="server" 
+                    VisualStyle="Vista" Width="41px" VisualStylePath="" Height="131px" 
+                    HorizontalAlign="Center" AutoExpand="False" ImageHeight="0" ImageWidth="0">
+                </cc1:C1Window>
+                <br />
+               
+                <br />
+
+                 <div class="simgekonusmalariizle">
+                        <asp:ImageButton ID="ImageButton3" runat="server" 
+                            ImageUrl="~/images/icons/konusmalariizle.png" 
+                            onclick="ImageButton3_Click" /><br />
+                    Konuşmaları İzle</div>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+
+                 <div class="simgegecmiskayitlar">
+                        <asp:ImageButton ID="ImageButton5" runat="server" 
+                            ImageUrl="~/images/icons/gecmiskonusmalar.png" 
+                            onclick="ImageButton5_Click" /><br />
+                    Geçmiş Kayıtlar</div>
+            </div>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
+        <ContentTemplate>
+<asp:Panel ID="Panel1" runat="server">
+                </asp:Panel>
+            
+        </ContentTemplate>
+            <Triggers>
+                <asp:AsyncPostBackTrigger ControlID="ImageButton1" EventName="Click" />
+            </Triggers>
+        </asp:UpdatePanel>
+
+                
+                <asp:UpdatePanel ID="UpdatePanel4" runat="server" UpdateMode="Conditional">
+        <ContentTemplate>
+                <asp:Panel ID="Panel3" runat="server">
+                </asp:Panel>
+        </ContentTemplate>
+            <Triggers>
+                <asp:AsyncPostBackTrigger ControlID="ImageButton3" EventName="Click" />
+            </Triggers>
+        </asp:UpdatePanel>
+
+
+                <asp:UpdatePanel ID="UpdatePanel6" runat="server" UpdateMode="Conditional">
+        <ContentTemplate>
+                <asp:Panel ID="Panel5" runat="server">
+                </asp:Panel>
+        </ContentTemplate>
+            <Triggers>
+                <asp:AsyncPostBackTrigger ControlID="ImageButton5" EventName="Click" />
+            </Triggers>
+        </asp:UpdatePanel>
+ 
+        <asp:UpdatePanel ID="UpdatePanel7" runat="server" UpdateMode="Conditional">
+        <ContentTemplate>
+        <asp:Panel ID="Panel6" runat="server">
+                </asp:Panel>
+        </ContentTemplate>
+            <Triggers>
+                <asp:AsyncPostBackTrigger ControlID="LinkButton6" EventName="Click" />
+            </Triggers>
+        </asp:UpdatePanel>
+        
+        <asp:UpdatePanel ID="UpdatePanel8" runat="server" UpdateMode="Conditional">
+        <ContentTemplate>
+        <asp:Panel ID="Panel7" runat="server">
+                </asp:Panel>
+        </ContentTemplate>
+            <Triggers>
+                <asp:AsyncPostBackTrigger ControlID="LinkButton5" EventName="Click" />
+            </Triggers>
+        </asp:UpdatePanel>
+
+        <asp:UpdatePanel ID="UpdatePanel9" runat="server" UpdateMode="Conditional">
+        <ContentTemplate>
+        <asp:Panel ID="Panel8" runat="server">
+                </asp:Panel>
+        </ContentTemplate>
+            <Triggers>
+                <asp:AsyncPostBackTrigger ControlID="LinkButton4" EventName="Click" />
+            </Triggers>
+        </asp:UpdatePanel>
+
+
+         <asp:UpdatePanel ID="UpdatePanel10" runat="server" UpdateMode="Conditional">
+        <ContentTemplate>
+        <asp:Panel ID="Panel9" runat="server">
+                </asp:Panel>
+        </ContentTemplate>
+            <Triggers>
+                <asp:AsyncPostBackTrigger ControlID="LinkButton3" EventName="Click" />
+            </Triggers>
+        </asp:UpdatePanel>
+
+
+         <asp:UpdatePanel ID="UpdatePanel11" runat="server" UpdateMode="Conditional">
+        <ContentTemplate>
+        <asp:Panel ID="Panel10" runat="server">
+                </asp:Panel>
+        </ContentTemplate>
+            <Triggers>
+                <asp:AsyncPostBackTrigger ControlID="LinkButton2" EventName="Click" />
+            </Triggers>
+        </asp:UpdatePanel>
+        
+              
+    <div id="baslatdiv" class="baslatzemindiv" >
+       <div class="baslatzemindivmenuyonetici">
+           <table align="left" cellpadding="0" cellspacing="0" class="style1">
+               <tr>
+                   <td class="style13">
+                       &nbsp;</td>
+                   <td class="style14">
+                       <img alt="" class="style12" src="images/icons/yonetici.png" /></td>
+                   <td>
+                       <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+                   </td>
+               </tr>
+           </table>
+       </div>
+       <div class="baslatzemindivmenu">
+           <table align="left" cellpadding="0" cellspacing="0" class="style1">
+               <tr>
+                   <td class="style8">
+                       &nbsp;</td>
+                   <td class="style6">
+                       <img alt="" class="style5" src="images/icons/departmanlar.png" /></td>
+                   <td>
+                       <asp:LinkButton ID="LinkButton6" runat="server" CssClass="baslatitem" 
+                           Font-Underline="False" onclick="LinkButton6_Click">Departmanlar</asp:LinkButton>
+                   </td>
+               </tr>
+           </table>
+       </div>
+       <div class="baslatzemindivmenu">
+           <table align="left" cellpadding="0" cellspacing="0" class="style1">
+               <tr>
+                   <td class="style8">
+                       &nbsp;</td>
+                   <td class="style6">
+                       <img alt="" class="style5" src="images/icons/operatorler.png" /></td>
+                   <td>
+                       <asp:LinkButton ID="LinkButton5" runat="server" CssClass="baslatitem" 
+                           Font-Underline="False" onclick="LinkButton5_Click">Operatörler</asp:LinkButton>
+                   </td>
+               </tr>
+           </table>
+       </div>
+       <div class="baslatzemindivmenu">
+            <table align="left" cellpadding="0" cellspacing="0" class="style1">
+               <tr>
+                   <td class="style8">
+                       &nbsp;</td>
+                   <td class="style6">
+                       <img alt="" class="style5" src="images/icons/yetkilendirme.png" /></td>
+                   <td>
+                       <asp:LinkButton ID="LinkButton4" runat="server" CssClass="baslatitem" 
+                           Font-Underline="False" onclick="LinkButton4_Click" Enabled="False">Yetkiler</asp:LinkButton>
+                   </td>
+               </tr>
+           </table>
+       </div>
+        <div class="baslatzemindivmenu">
+            <table align="left" cellpadding="0" cellspacing="0" class="style1">
+               <tr>
+                   <td class="style8">
+                       &nbsp;</td>
+                   <td class="style6">
+                       <img alt="" class="style5" src="images/icons/ayarlarim.png" /></td>
+                   <td>
+                       <asp:LinkButton ID="LinkButton3" runat="server" CssClass="baslatitem" 
+                           Font-Underline="False" onclick="LinkButton3_Click" Enabled="False">Ayarlarım</asp:LinkButton>
+                   </td>
+               </tr>
+           </table>
+       </div>
+        <div class="baslatzemindivmenu">
+            <table align="left" cellpadding="0" cellspacing="0" class="style1">
+               <tr>
+                   <td class="style8">
+                       &nbsp;</td>
+                   <td class="style6">
+                       <img alt="" class="style5" src="images/icons/yardim.png" /></td>
+                   <td>
+                       <asp:LinkButton ID="LinkButton2" runat="server" CssClass="baslatitem" 
+                           Font-Underline="False" onclick="LinkButton2_Click">Yardım</asp:LinkButton>
+                   </td>
+               </tr>
+           </table>
+       </div>
+        <div class="baslatzemindivmenu">
+            <table align="left" cellpadding="0" cellspacing="0" class="style1">
+               <tr>
+                   <td class="style8">
+                       &nbsp;</td>
+                   <td class="style6">
+                       <img alt="" class="style5" src="images/icons/cikis.png" /></td>
+                   <td>
+                       <asp:LinkButton ID="LinkButton1" runat="server" CssClass="baslatitem" 
+                           Font-Underline="False" onclick="LinkButton1_Click" OnClientClick="onof();">Çıkış</asp:LinkButton>
+                   </td>
+               </tr>
+           </table>
+       </div>
+
+    </div>
+    </div>
+
+    <div id="sagtarafdiv" runat="server" class="sabitdivsagtaraf">
+          <div id="saat" align="center">
+             <embed src="images/saat.swf" quality="high" wmode="transparent" width="150" height="150" name="superpimper" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+          </div>
+          
+          <div id="uygulamadurum" align="center">
+           
+             <div style="width: 700px; height: 300px;">
+                 <input id="Text1" runat="server" type="text" /><asp:HiddenField ID="HiddenField1" runat="server" />
+       
+        
+        <div id="aaa" style="display:none; overflow:auto; height:300px; width:200px;">aaa&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            p&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; p</div>
+        <div id="bbb" style="display:none;">j</div>
+        <div id="ccc" style="display:none;">konuşmalar</div>
+        <div id="bilgi" runat="server"></div>
+
+        <div style=" bottom:85px;  width: 90%; position:fixed; float:right; right:150px; " align="right" onclick="baslatdivgizle()" >
+          <div id="chatalani" style="overflow:auto; height:279px; width:90%; " align="left"></div>
+        </div>
+        
+         <div id="chatprosabitdiv" align="left" onclick="baslatdivgizle()">
+          
+        </div>
+       
+        <div  style="background-color:#005789; border: thin groove #000000; float :left;  bottom:55px; right:0px; position:fixed; font-family:Calibri;" align="left">
+           <div>
+            <div style="width: 91px; height:23px; margin-left: 2px; margin-top:3px; font-size: 15px; color:White; font-family:Calibri; font-weight:bold; " >
+                
+                Sohbet</div> 
+           <div id="kisialani" style="overflow:auto; background-color:White; font-size:15px;"></div>
+           <div id="onofdiv" onclick="onof()" style=" margin-right: 2px; font-size: 14px;">
+             <iframe id="iframe1" src="onoffbutton.aspx" height="28px" width="140px" frameborder="0" scrolling="no" onload="iframetik()"></iframe>
+           </div>
+           
+          </div>
+        </div>
+        
+    
+        
+    </div>
+
+          </div>
+        </div>  
+      
+       
+    <div id="sabitdiv" class="sabitdiv" runat="server">
+           
+        <div class="baslatlogo" onclick="baslatdivgoster()">
+          
+        </div>
+        <div id="minimizeler" class="minimizelerdivalani"></div>
+        
+       </div>
+      
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>

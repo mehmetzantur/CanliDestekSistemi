@@ -1,0 +1,11 @@
+DevExpress.Web.ASPxEditors.ASPxComboBox, DevExpress.Web.ASPxEditors.v10.1, Version=10.1.5.0, Culture=neutral, PublicKeyToken=940cfcde86f32efd
+DevExpress.Web.ASPxEditors.ASPxTextBox, DevExpress.Web.ASPxEditors.v10.1, Version=10.1.5.0, Culture=neutral, PublicKeyToken=940cfcde86f32efd
+DevExpress.Web.ASPxPopupControl.ASPxPopupControl, DevExpress.Web.v10.1, Version=10.1.5.0, Culture=neutral, PublicKeyToken=940cfcde86f32efd
+DevExpress.Web.ASPxGridView.Export.ASPxGridViewExporter, DevExpress.Web.ASPxGridView.v10.1.Export, Version=10.1.5.0, Culture=neutral, PublicKeyToken=940cfcde86f32efd
+DevExpress.Web.ASPxEditors.ASPxLabel, DevExpress.Web.ASPxEditors.v10.1, Version=10.1.5.0, Culture=neutral, PublicKeyToken=940cfcde86f32efd
+DevExpress.Web.ASPxGridView.ASPxGridView, DevExpress.Web.ASPxGridView.v10.1, Version=10.1.5.0, Culture=neutral, PublicKeyToken=940cfcde86f32efd
+C1.Web.UI.Controls.C1HeaderContentControl.C1HeaderContentControl, C1.Web.UI.Controls.2, Version=2.0.20101.168, Culture=neutral, PublicKeyToken=9b75583953471eea
+C1.Web.UI.Controls.C1Accordion.C1Accordion, C1.Web.UI.Controls.2, Version=2.0.20101.168, Culture=neutral, PublicKeyToken=9b75583953471eea
+C1.Web.UI.Controls.C1TabControl.C1TabControl, C1.Web.UI.Controls.2, Version=2.0.20101.168, Culture=neutral, PublicKeyToken=9b75583953471eea
+C1.Web.UI.Controls.C1TabStrip.C1TabStrip, C1.Web.UI.Controls.2, Version=2.0.20101.168, Culture=neutral, PublicKeyToken=9b75583953471eea
+C1.Web.UI.Controls.C1Window.C1Window, C1.Web.UI.Controls.2, Version=2.0.20101.168, Culture=neutral, PublicKeyToken=9b75583953471eea

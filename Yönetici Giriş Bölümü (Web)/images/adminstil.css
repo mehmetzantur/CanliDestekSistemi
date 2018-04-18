@@ -1,0 +1,253 @@
+﻿body
+{
+    
+    
+}
+
+
+.anadiv
+{
+  height:768px;
+  width: 1024px;
+    margin-left: 0px;
+
+    
+}
+
+
+.sabitdiv
+{
+    height: 55px;
+    position: fixed;
+    left: 0px;
+    width: 100%;
+    background-image: url('sabitback.png');
+    background-repeat: repeat-x;
+    bottom:0px;
+    float:left;
+}
+
+
+.sabitdivsagtaraf
+{
+    height: 100%;
+    position: fixed;
+    right: 0px;
+    width: 150px;
+    top: 0px;
+    background-image: url('sagtarafzeminback.png');
+    background-repeat: repeat-y;
+}
+
+
+
+.baslatlogo
+{
+    background-image: url('baslatlogo.png');
+    width: 92px;
+    height: 55px;
+    background-repeat: no-repeat;
+    background-position: center; 
+    margin-left:5px;
+    margin-top:0px;
+    float:left;
+}
+
+.baslatlogo:hover
+{
+    float:left;
+    background-image: url('baslatlogohover.png');
+    width: 92px;
+    height: 55px;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top:0px;
+    margin-left:5px;
+}
+
+
+
+
+.baslatzemindiv{
+    height: 325px;
+    position: fixed;
+    bottom: 18px;
+    left: 0px;
+    width: 200px;   
+    z-index:2;
+
+}
+
+.baslatzemindivmenu
+{
+   height: 40px;
+   width: 200px; 
+   background-image: url('baslatzeminback.png');
+   color:White;
+   font-family:Calibri;
+   font-weight:bold;
+   cursor:pointer;
+   
+}
+
+.baslatzemindivmenuyonetici
+{
+   height: 48px;
+   width: 200px; 
+   background-image: url('baslatzeminbackyonetici.png');
+   color:White;
+   font-family:Calibri;
+   font-weight:bold;
+   cursor:pointer;
+}
+
+
+
+.baslatzemindivmenu:hover
+{
+   height: 40px;
+   width: 200px; 
+   background-image: url('baslatzeminbackhover.png');
+}
+
+
+.baslatitem
+{
+    color:White;
+   font-family:Calibri;
+   font-weight:bold;
+   cursor:pointer;
+}
+
+
+
+.simgeuygulamaayarlari
+{
+    width:130px;
+    height:40px;
+    float:left;
+    text-align:center;
+     font-family:Calibri;
+}
+.simgeuygulamaayarlari:hover
+{
+    width:130px;
+    height:40px;
+    float:left;
+    text-decoration:underline;
+    text-align:center;
+    cursor:pointer;
+     font-family:Calibri;
+     
+}
+
+
+.simgechatpro
+{
+    width:130px;
+    height:40px;
+    float:left;
+    text-align:center;
+    font-family:Calibri;
+}
+.simgechatpro:hover
+{
+    width:130px;
+    height:40px;
+    float:left;
+    text-decoration:underline;
+    text-align:center;
+    cursor:pointer;
+    font-family:Calibri;
+}
+
+
+
+.simgekonusmalariizle
+{
+    width:130px;
+    height:40px;
+    float:left;
+    text-align:center;
+   font-family:Calibri;
+}
+.simgekonusmalariizle:hover
+{
+    width:130px;
+    height:40px;
+    float:left;
+    text-decoration:underline;
+    text-align:center;
+    cursor:pointer;
+   font-family:Calibri;
+}
+
+
+
+.simgegecmiskayitlar
+{
+    width:130px;
+    height:40px;
+    float:left;
+    text-align:center;
+  font-family:Calibri;
+}
+.simgegecmiskayitlar:hover
+{
+    width:130px;
+    height:40px;
+    float:left;
+    text-decoration:underline;
+    text-align:center;
+    cursor:pointer;
+  font-family:Calibri;
+}
+
+
+
+.simgeraporlar
+{
+    width:130px;
+    height:40px;
+    float:left;
+    text-align:center;
+  font-family:Calibri;
+}
+.simgeraporlar:hover
+{
+    width:130px;
+    height:40px;
+    float:left;
+    text-decoration:underline;
+    text-align:center;
+    cursor:pointer;
+  font-family:Calibri;
+}
+
+
+
+.minimizelerdivalani
+{
+    width:85%;
+    height:65px;
+    float:left;
+    overflow:auto;
+}
+
+
+
+.konusmalistesi:hover
+{
+   background-color:#ADCDFF; 
+   cursor:pointer;
+}
+
+.konusmalistesichatop
+{
+    color:#ADCDFF;
+}
+
+.konusmalistesichatmus
+{
+    color:green;
+}

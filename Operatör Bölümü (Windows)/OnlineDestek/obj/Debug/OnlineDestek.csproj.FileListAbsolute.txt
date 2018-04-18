@@ -1,0 +1,54 @@
+C:\Documents and Settings\Administrator\Desktop\OnlineDestek\OnlineDestek\bin\Debug\OnlineDestek.exe
+C:\Documents and Settings\Administrator\Desktop\OnlineDestek\OnlineDestek\bin\Debug\OnlineDestek.pdb
+C:\Documents and Settings\Administrator\Desktop\OnlineDestek\OnlineDestek\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Administrator\Desktop\OnlineDestek\OnlineDestek\obj\Debug\OnlineDestek.frmLogin.resources
+C:\Documents and Settings\Administrator\Desktop\OnlineDestek\OnlineDestek\obj\Debug\OnlineDestek.Properties.Resources.resources
+C:\Documents and Settings\Administrator\Desktop\OnlineDestek\OnlineDestek\obj\Debug\OnlineDestek.csproj.GenerateResource.Cache
+C:\Documents and Settings\Administrator\Desktop\OnlineDestek\OnlineDestek\obj\Debug\OnlineDestek.exe
+C:\Documents and Settings\Administrator\Desktop\OnlineDestek\OnlineDestek\obj\Debug\OnlineDestek.pdb
+C:\Documents and Settings\Administrator\Desktop\OnlineDestek\OnlineDestek\obj\Debug\OnlineDestek.frmDbSec.resources
+C:\Documents and Settings\Administrator\Desktop\OnlineDestek\OnlineDestek\obj\Debug\OnlineDestek.frmMain.resources
+C:\Documents and Settings\Administrator\Desktop\OnlineDestek\OnlineDestek\obj\Debug\OnlineDestek.frmIpDetay.resources
+C:\Documents and Settings\Administrator\Desktop\OnlineDestek\OnlineDestek\obj\Debug\OnlineDestek.frmChat.resources
+C:\Documents and Settings\Administrator\Desktop\OnlineDestek\OnlineDestek\obj\Debug\OnlineDestek.MusteriAlert.resources
+C:\Documents and Settings\Administrator\Desktop\OnlineDestek\OnlineDestek\obj\Debug\OnlineDestek.frmSorgu.resources
+C:\Users\Mehmet\Documents\Alınan Dosyalarım\OnlineDestek(1)\OnlineDestek\OnlineDestek\bin\Debug\OnlineDestek.exe
+C:\Users\Mehmet\Documents\Alınan Dosyalarım\OnlineDestek(1)\OnlineDestek\OnlineDestek\bin\Debug\OnlineDestek.pdb
+C:\Users\Mehmet\Documents\Alınan Dosyalarım\OnlineDestek(1)\OnlineDestek\OnlineDestek\bin\Debug\DevExpress.Data.v8.3.dll
+C:\Users\Mehmet\Documents\Alınan Dosyalarım\OnlineDestek(1)\OnlineDestek\OnlineDestek\bin\Debug\DevExpress.Utils.v8.3.dll
+C:\Users\Mehmet\Documents\Alınan Dosyalarım\OnlineDestek(1)\OnlineDestek\OnlineDestek\bin\Debug\DevExpress.XtraPrinting.v8.3.dll
+C:\Users\Mehmet\Documents\Alınan Dosyalarım\OnlineDestek(1)\OnlineDestek\OnlineDestek\bin\Debug\DevExpress.XtraReports.v8.3.dll
+C:\Users\Mehmet\Documents\Alınan Dosyalarım\OnlineDestek(1)\OnlineDestek\OnlineDestek\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Mehmet\Documents\Alınan Dosyalarım\OnlineDestek(1)\OnlineDestek\OnlineDestek\obj\Debug\OnlineDestek.frmSorgu.resources
+C:\Users\Mehmet\Documents\Alınan Dosyalarım\OnlineDestek(1)\OnlineDestek\OnlineDestek\obj\Debug\OnlineDestek.MusteriAlert.resources
+C:\Users\Mehmet\Documents\Alınan Dosyalarım\OnlineDestek(1)\OnlineDestek\OnlineDestek\obj\Debug\OnlineDestek.frmChat.resources
+C:\Users\Mehmet\Documents\Alınan Dosyalarım\OnlineDestek(1)\OnlineDestek\OnlineDestek\obj\Debug\OnlineDestek.frmDbSec.resources
+C:\Users\Mehmet\Documents\Alınan Dosyalarım\OnlineDestek(1)\OnlineDestek\OnlineDestek\obj\Debug\OnlineDestek.frmIpDetay.resources
+C:\Users\Mehmet\Documents\Alınan Dosyalarım\OnlineDestek(1)\OnlineDestek\OnlineDestek\obj\Debug\OnlineDestek.frmLogin.resources
+C:\Users\Mehmet\Documents\Alınan Dosyalarım\OnlineDestek(1)\OnlineDestek\OnlineDestek\obj\Debug\OnlineDestek.frmMain.resources
+C:\Users\Mehmet\Documents\Alınan Dosyalarım\OnlineDestek(1)\OnlineDestek\OnlineDestek\obj\Debug\OnlineDestek.Properties.Resources.resources
+C:\Users\Mehmet\Documents\Alınan Dosyalarım\OnlineDestek(1)\OnlineDestek\OnlineDestek\obj\Debug\OnlineDestek.csproj.GenerateResource.Cache
+C:\Users\Mehmet\Documents\Alınan Dosyalarım\OnlineDestek(1)\OnlineDestek\OnlineDestek\obj\Debug\OnlineDestek.exe
+C:\Users\Mehmet\Documents\Alınan Dosyalarım\OnlineDestek(1)\OnlineDestek\OnlineDestek\obj\Debug\OnlineDestek.pdb
+C:\Users\Oguzhan\Desktop\OnlineDestek\OnlineDestek\obj\Debug\OnlineDestek.exe
+C:\Users\Oguzhan\Desktop\OnlineDestek\OnlineDestek\obj\Debug\OnlineDestek.pdb
+C:\Users\Oguzhan\Desktop\OnlineDestek\OnlineDestek\bin\Debug\OnlineDestek.exe
+C:\Users\Oguzhan\Desktop\OnlineDestek\OnlineDestek\bin\Debug\OnlineDestek.pdb
+C:\Users\Oguzhan\Desktop\OnlineDestek\OnlineDestek\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Oguzhan\Desktop\OnlineDestek\OnlineDestek\obj\Debug\OnlineDestek.frmSorgu.resources
+C:\Users\Oguzhan\Desktop\OnlineDestek\OnlineDestek\obj\Debug\OnlineDestek.frmDbSec.resources
+C:\Users\Oguzhan\Desktop\OnlineDestek\OnlineDestek\obj\Debug\OnlineDestek.frmLogin.resources
+C:\Users\Oguzhan\Desktop\OnlineDestek\OnlineDestek\obj\Debug\OnlineDestek.frmMain.resources
+C:\Users\Oguzhan\Desktop\OnlineDestek\OnlineDestek\obj\Debug\OnlineDestek.Properties.Resources.resources
+C:\Users\Oguzhan\Desktop\OnlineDestek\OnlineDestek\obj\Debug\OnlineDestek.csproj.GenerateResource.Cache
+C:\Users\Oguzhan\Desktop\OnlineDestek\OnlineDestek\bin\Debug\DevComponents.DotNetBar2.dll
+C:\Users\Oguzhan\Desktop\OnlineDestek\OnlineDestek\bin\Debug\DevExpress.Data.v8.3.dll
+C:\Users\Oguzhan\Desktop\OnlineDestek\OnlineDestek\bin\Debug\DevExpress.Utils.v8.3.dll
+C:\Users\Oguzhan\Desktop\OnlineDestek\OnlineDestek\bin\Debug\DevExpress.XtraPrinting.v8.3.dll
+C:\Users\Oguzhan\Desktop\OnlineDestek\OnlineDestek\bin\Debug\DevExpress.XtraReports.v8.3.dll
+C:\Users\Oguzhan\Desktop\OnlineDestek\OnlineDestek\bin\Debug\DevExpress.XtraReports.v8.3.xml
+C:\Users\Oguzhan\Desktop\OnlineDestek\OnlineDestek\bin\Debug\DevExpress.Utils.v8.3.xml
+C:\Users\Oguzhan\Desktop\OnlineDestek\OnlineDestek\bin\Debug\DevExpress.Data.v8.3.xml
+C:\Users\Oguzhan\Desktop\OnlineDestek\OnlineDestek\bin\Debug\DevComponents.DotNetBar2.xml
+C:\Users\Oguzhan\Desktop\OnlineDestek\OnlineDestek\bin\Debug\DevExpress.XtraPrinting.v8.3.xml
+C:\Users\Oguzhan\Desktop\OnlineDestek\OnlineDestek\obj\Debug\OnlineDestek.frmHakkinda.resources

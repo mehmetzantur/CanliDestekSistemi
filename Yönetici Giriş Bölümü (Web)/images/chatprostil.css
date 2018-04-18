@@ -1,0 +1,105 @@
+﻿body 
+{
+    background-color:Gray;
+}
+
+
+.chatprokisilistesi
+{
+    background-color: White;
+    cursor: pointer;
+    height: 20px;
+    
+    
+}
+
+.chatprokisilistesi:hover
+{
+    background-color:#005789;
+    color:White;
+}
+
+.chatprokisilistesi:active
+{
+    background-color:green;   
+}
+
+
+#chatprosabitdiv
+{
+    position: fixed;
+    bottom: 55px;
+    right: 150px;
+    width:90%;
+    height:29px;
+    overflow:auto;
+}
+
+
+
+.mesajlardiv
+{
+  height:250px; 
+  width:200px; 
+  font-family:Calibri;  
+  font-size:13px;
+}
+
+
+.pencerebacks
+{
+   
+    height: 27px;
+    width: 200px;
+    background-color:#005789;
+    color:White;
+    font-family:Calibri;
+    font-weight:bold;
+    font-size:15px;
+}
+
+.pencerebacksmsj
+{
+    background-position: center center;
+    height: 20px;
+    width: 200px;
+    background-color:#c79b1d;
+    color:White;
+}
+
+
+
+.pencerex
+{
+    background-position: center top;
+    background-color:transparent;
+    border-color: transparent;
+    border-style: solid;
+    background-image: url('chatpropencerex.png');
+    background-repeat: no-repeat;
+    height:20px; 
+    width:20px;
+    cursor:pointer;
+}
+
+.pencerex:hover
+{
+    background-position: center top;
+    background-color:transparent;
+    border-color: transparent;
+    border-style: solid;
+    background-image: url('chatpropencerexhover.png');
+    background-repeat: no-repeat;
+    height:20px; 
+    width:20px;
+    cursor:pointer;
+}
+
+
+.sanaldivler
+{
+   background-color:Orange;
+   height:100px;
+   width:200px;
+   overflow:auto;    
+}
